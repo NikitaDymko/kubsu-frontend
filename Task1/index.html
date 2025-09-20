@@ -35,14 +35,14 @@
         <hr>
 
         <form>
-            <label for="fio">Ваше Имя</label>
-            <input type="text" name="lastname" placeholder="Введите вашу фамилию" required>
+            <label for="firstname">Ваше Имя</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Введите ваше имя" required>
             <br />
-            <label for="fio">Ваша Фамилия</label>
-            <input type="text" name="firstname" placeholder="Введите ваше имя" required>
+            <label for="lastname">Ваша Фамилия</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Введите вашу фамилию" required>
             <br />
-            <label for="fio">Ваше Отчество (если есть)</label>
-            <input type="text" name="middlename" placeholder="Введите ваше отчество (если есть)">
+            <label for="middlename">Ваше Отчество (если есть)</label>
+            <input type="text" id="middlename" name="middlename" placeholder="Введите ваше отчество (если есть)">
             <br />
             <label for="phone-number">Ваш номер телефона</label>
             <input type="tel" id="phone-number" placeholder="+7(999)999-99-99" name="phone" pattern="^\+7\d{10}$" required />
@@ -82,7 +82,7 @@
             <input type="checkbox" id="agreement" name="agreement" required>
             <br />
             <button type="submit">Сохранить</button>
-         </form>
+        </form>
 
         <div id="fragment" style="margin-top: 2000px;
                                   margin-bottom: 2000px;">
