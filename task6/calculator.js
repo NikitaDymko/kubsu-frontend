@@ -13,6 +13,19 @@ document.addEventListener('DOMContentLoaded', function() {
         custom: 1500
     };
 
+    function validateQuantity(input) {
+        const value = input.value.trim();
+        const regex = /^[1-9]\d*$/;
+        
+        if (!regex.test(value) || value === '0') {
+            input.style.borderColor = 'red';
+            return false;
+        } else {
+            input.style.borderColor = '#ddd';
+            return true;
+        }
+    }
+
     function updateInterface() {
         const selectedService = document.querySelector('input[name="serviceType"]:checked').value;
         
@@ -34,7 +47,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateTotal() {
-        const quantity = parseInt(quantityInput.value) || 1;
+        if (!validateQuantity(quantityInput)) {
+            totalPriceElement.textContent = 'Введите корректное количество (только положительные числа)';
+            totalPriceElement.style.color = 'red';
+            return;
+        }
+
+        const quantity = parseInt(quantityInput.value);
         const selectedService = document.querySelector('input[name="serviceType"]:checked').value;
         
         let total = basePrices[selectedService] * quantity;
@@ -49,9 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         totalPriceElement.textContent = total.toLocaleString('ru-RU') + ' руб.';
+        totalPriceElement.style.color = '#2c5aa0';
     }
 
-    quantityInput.addEventListener('input', calculateTotal);
+    quantityInput.addEventListener('input', function() {
+        validateQuantity(this);
+        calculateTotal();
+    });
+
+    quantityInput.addEventListener('blur', function() {
+        if (!validateQuantity(this)) {
+            this.value = '1';
+            calculateTotal();
+        }
+    });
 
     serviceTypeRadios.forEach(radio => {
         radio.addEventListener('change', updateInterface);
