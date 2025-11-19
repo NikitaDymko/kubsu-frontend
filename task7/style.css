@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.slides-container {
+    display: flex;
+    overflow: hidden;
+    width: 900px; /* 3 изображения × 300px */
+    scroll-behavior: smooth;
+}
+
+.slide {
+    flex: 0 0 300px;
+    padding: 10px;
+}
+
+.slide img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.arrow {
+    background: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.arrow:hover {
+    background: #007bff;
+    color: white;
+}
+
+.pager {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Адаптивность для смартфонов */
+@media (max-width: 768px) {
+    .slides-container {
+        width: 300px; /* 1 изображение */
+    }
+    
+    .slide {
+        flex: 0 0 300px;
+    }
+    
+    .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .slides-container {
+        width: 600px; /* 2 изображения */
+    }
+}
